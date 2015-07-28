@@ -1,4 +1,4 @@
-=== Twig Anything CSV ===
+=== CSV format for Twig Anything ===
 Contributors: meglio
 Tags: csv, comma separate values, excel, twig
 Requires at least: 3.6.1
