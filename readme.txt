@@ -21,17 +21,17 @@ Adds CSV (comma-separated values) parsing to the
 
 Let us use a CSV file with a list of country names and their corresponding top-level domain names (TLD). Here is an extract from the file:
 
-> Belgium,Brussels,EUR,Euro,BE,.be
-> Belize,Belmopan,BZD,Dollar,BZ,.bz
-> Benin,Porto-Novo,XOF,Franc,BJ,.bj
-> Bhutan,Thimphu,BTN,Ngultrum,BT,.bt
+`Belgium,Brussels,EUR,Euro,BE,.be
+Belize,Belmopan,BZD,Dollar,BZ,.bz
+Benin,Porto-Novo,XOF,Franc,BJ,.bj
+Bhutan,Thimphu,BTN,Ngultrum,BT,.bt`
 
 We want to display TLDs for all countries that start with “D”, just like this:
 
-> Denmark - **.dk**
-> Djibouti - **.dj**
-> Dominica - **.dm**
-> Dominican Republic - **.do**
+`Denmark - .dk
+Djibouti - .dj
+Dominica - .dm
+Dominican Republic - .do`
 
 Because columns are numbered starting from #0, we will need the column #0 (country name) and #5 (top-level domain name).
 
