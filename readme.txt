@@ -7,35 +7,43 @@ Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds CSV support (comma-separated values) to the Twig Anything plugin. The delimiter, enclosure and escape characters are configurable.
-
+Output any CSV data in WordPress: filter, sort, output in tables, lists or any HTML. 
 
 
 
 == Description ==
 
-Adds CSV (comma-separated values) parsing to the
+This is a free add-on that adds CSV support (comma-separated values) to the
 [Twig Anything](https://twiganything.com/ "Twig Anything") WordPress plugin.
 
-= How to use =
+You can configure how CSV is parsed by entering the delimiter, enclosure and escape characters.
 
-Let us use a CSV file with a list of country names and their corresponding top-level domain names (TLD). Here is an extract from the file:
+Tutorials below demonstrate 3 examples:
+
+* Example 1: generate text, one line for each line from CSV
+* Example 2: generate a table
+* Example 3: use shortcodes to output it anywhere in WordPress
+
+
+= EXAMPLE 1: MULTILINE TEXT =
+
+Let us use a CSV file with a list of countries and their corresponding top-level domain names (TLD). Here is an extract from the file:
 
 `Belgium,Brussels,EUR,Euro,BE,.be
 Belize,Belmopan,BZD,Dollar,BZ,.bz
 Benin,Porto-Novo,XOF,Franc,BJ,.bj
 Bhutan,Thimphu,BTN,Ngultrum,BT,.bt`
 
-We want to display TLDs for all countries that start with “D”, just like this:
+In our example, let's display TLDs for all countries that start with “D”:
 
 `Denmark - .dk
 Djibouti - .dj
 Dominica - .dm
 Dominican Republic - .do`
 
-Because columns are numbered starting from #0, we will need the column #0 (country name) and #5 (top-level domain name).
+Columns are numbered starting from #0, so we will need the column #0 (country name) and #5 (top-level domain name).
 
-After the input is parsed, the resulting sequence of lines is passed to your Twig template as the data variable. You can then loop over it with using Twig’s [“for” syntax:](http://twig.sensiolabs.org/doc/tags/for.html):
+After the CSV input has been parsed, the resulting lines are passed to your Twig Template as the **data** variable. You can then loop over it with using [“for” syntax:](http://twig.sensiolabs.org/doc/tags/for.html):
 
 `{% for row in data if row.0|slice(0,1)|upper == 'D' %}
   {{ row.0 }} - <strong>{{row.5}}</strong><br/>
@@ -48,6 +56,78 @@ Let us take a closer look at this piece: `if row.0|slice(0,1)|upper == 'D'`
 First of all, `row.0` is how we access column #0, a country name in our case. Next, `|slice(0,1)` is a Twig filter that takes the first character of the country name. The next filter is `|upper` and it simply uppercases the first letter returned by the previous filter. Finally, we only allow for countries that start with the “D” letter: `== 'D'`.
 
 Inside the loop, we output a country name with using `{{row.0}}` and a TLD name with using `{{row.5}}`. Plus a very basic HTML markup: `<br/>` to insert a line break and `<strong>...</strong>` to make TLD name appear bold.
+
+
+= EXAMPLE 2: TABLE =
+
+Using the same CSV file, let's now output our data in a table with using HTML markup.
+
+If you are not very familiar with HTML, I recommend going through the following tutorials - you'll learn in 10 minutes, I guarantee!
+
+* [Tutorial 1](https://computerservices.temple.edu/creating-tables-html)
+* [Tutorial 2](https://css-tricks.com/complete-guide-table-element/)
+
+You can also use the following table generators and just copy-paste the HTML they generate right into your template. The generators also allow to apply some basic styling, like borders, colors, margins, paddings etc. 
+
+* [Generator 1](http://www.rapidtables.com/web/tools/html-table-generator.htm)
+* [Generator 2](http://www.textfixer.com/html/html-table-generator.php)
+
+So, we will use the following HTML tags:
+
+* **<table>...</table>** to make a table
+* **<thead>...</thead>** to make a table header with column headings
+* **<tbody>...</tbody>*** to make a table body with all the rows from CSV
+* **<tr>...</tr>** to make a table row
+* **<th>...</th>** to make a cell in the header's row
+* **<td>...</td>** to make a cell in a regular rows in the table's body
+
+Here is our template:
+
+`<table>
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>TLD</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in data if row.0|slice(0,1)|upper == 'D' %}
+  <tr>
+    <td>{{ row.0 }}</td>
+    <td>{{ row.5 }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>`
+
+Notice how we use the `{% for row in data %}` syntax to loop over CSV lines,
+and then output a table row `<tr>...</tr>` inside the loop, so that
+a new row is made for every CSV line.
+
+Actually, you can use just any HTML and stylize your table the way you need.
+Just don't forget to put `{{row.0}}`, `{{row.1}}` etc where you want
+your csv values in the cells `<td>...</td>`.
+
+
+= EXAMPLE 3: SHORTCODES =
+
+While you prepare your template, you usually preview it many times by clicking
+the "Preview Changes" button. Once you are happy with the preview, you will
+want to embed it somewhere - in a post or a page, footer / header,
+in a widget or as a Visual Composer block.
+
+To embed your template, you will use a shortcode:
+
+`[twig-anything slug="my-template-slug"]`
+
+In WordPress, every Twig Template has its own slug, just like posts and pages.
+It can be found under the template title.
+
+Alternatively, you can use the template ID:
+ 
+`[twig-anything id="123"]`
+
+
 
 
 == Installation ==
