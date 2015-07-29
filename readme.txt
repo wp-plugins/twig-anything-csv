@@ -74,12 +74,12 @@ You can also use the following table generators and just copy-paste the HTML the
 
 So, we will use the following HTML tags:
 
-* **<table>...</table>** to make a table
-* **<thead>...</thead>** to make a table header with column headings
-* **<tbody>...</tbody>*** to make a table body with all the rows from CSV
-* **<tr>...</tr>** to make a table row
-* **<th>...</th>** to make a cell in the header's row
-* **<td>...</td>** to make a cell in a regular rows in the table's body
+* `<table>...</table>` to make a table
+* `<thead>...</thead>` to make a table header with column headings
+* `<tbody>...</tbody>` to make a table body with all the rows from CSV
+* `<tr>...</tr>` to make a table row
+* `<th>...</th>` to make a cell in the header's row
+* `<td>...</td>` to make a cell in a regular rows in the table's body
 
 Here is our template:
 
