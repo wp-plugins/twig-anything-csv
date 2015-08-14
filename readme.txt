@@ -1,28 +1,30 @@
-=== CSV format for Twig Anything ===
+=== CSV Format ===
 Contributors: meglio
-Tags: csv, comma separate values, excel, twig
+Tags: csv, comma separated values, excel, comma-separated, csv api, delimiter, delimiter character, escape character, enclosure character, parse csv, output csv, read csv, read csv, csv file, csv from file, csv to api, parse csv, import csv, understand csv, csv style, csv values, csv format, csv lines, interpret csv, local csv, big csv, cache csv, export from excel, read excel, csv template, twig, twig template, twig anything
 Requires at least: 3.6.1
-Tested up to: 4.2.3
+Tested up to: 4.2.4
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Output any CSV data in WordPress: filter, sort, output in tables, lists or any HTML. 
+Read and output any CSV data in WordPress: filter, sort, output in tables, lists or any HTML.
 
 
 
 == Description ==
 
-This is a free add-on that adds CSV support (comma-separated values) to the
-[Twig Anything](https://twiganything.com/ "Twig Anything") WordPress plugin.
+Read CSV data from local files, WordPres media files, local or remote databases or 3rd party API, and output it anywhere in WordPress with using shortcodes, in posts/pages, headers/footers, widgets or in Visual Composer.
 
-You can configure how CSV is parsed by entering the delimiter, enclosure and escape characters.
+You can configure how CSV is parsed by specifying delimiter character, enclosure character and escape character.
+
+*This is a free add-on that adds CSV support (comma-separated values) to the
+[Twig Anything](https://twiganything.com/ "Twig Anything") WordPress plugin.*
 
 Tutorials below demonstrate 3 examples:
 
 * Example 1: generate text, one line for each line from CSV
 * Example 2: generate a table
-* Example 3: use shortcodes to output it anywhere in WordPress
+* Example 3: use shortcodes to output CSV anywhere in WordPress
 
 
 = EXAMPLE 1: MULTILINE TEXT =
@@ -247,5 +249,17 @@ so you can loop over it.
 
 == Changelog ==
 
+= 1.1=
+* Add link to Community and Support forum to the Plugins list page
+* Check if Twig Anything is installed and active, show a notice if it is not
+
 = 1.0 =
 * The first release
+
+
+
+
+== Upgrade Notice ==
+
+= 1.1 =
+This version adds a link to Community and Support forum for your convenience. It also checks if Twig Anything plugin is active and installed, and shows a notice if it is not. This is not a critical update.
