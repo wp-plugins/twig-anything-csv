@@ -249,7 +249,7 @@ so you can loop over it.
 
 == Changelog ==
 
-= 1.1=
+= 1.1 =
 * Add link to Community and Support forum to the Plugins list page
 * Check if Twig Anything is installed and active, show a notice if it is not
 
